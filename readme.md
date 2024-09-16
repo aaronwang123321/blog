@@ -1,4 +1,5 @@
 ## 代码编写说明
+A simple blog for Multi-languages supporting
 
 ### 结构
 myblog/
@@ -43,5 +44,5 @@ myblog/
 - **static/**: 存放静态文件，如 CSS、JavaScript 文件和图片等。
     - **css/**: 存放 CSS 文件。
 - **migrations/**: 如果使用 Flask-Migrate 进行数据库迁移，这个目录会包含迁移脚本和配置文件。
-- **config.py**: 包含应用的配置，如数据库配置、密钥等。
+- **config.py**: 包含应用的配置，如数据库配置、密钥等
 - **run.py**: 一个简单的脚本，用于运行 Flask 应用，通常用于生产环境。

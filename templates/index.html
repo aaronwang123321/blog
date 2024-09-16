@@ -20,7 +20,7 @@
             <a href="{{ url_for('main.index', page=posts.prev_num) }}">&laquo; Previous</a>
         {% endif %}
         {% if posts.has_next %}
-            <a href="{{ url_for('main.index', page=posts.next_num) }}">Next &raquo;</a>
+            <a href="{{ url_for('main.index', page=posts.next_num) }}">Next &raquo;&raquo;</a>
         {% endif %}
     </div>
 {% endblock %}

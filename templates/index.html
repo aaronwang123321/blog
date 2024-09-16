@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Minimalist Blog{% endblock %}
+
+{% block content %}
+    <h1>Recent Posts</h1>
+    {% for post in posts.items %}
+        <article>
+            <h2>{{ post.title }}</h2>
+            <div class="post-meta">
+                By {{ post.author.username }} on {{ post.date_posted.strftime('%Y-%m-%d') }}
+            </div>
+            <p>{{ post.content[:200] }}{% if post.content|length > 200 %}...{% endif %}</p>
+            <a href="{{ url_for('main.post', post_id=post.id) }}" class="read-more">Read more</a>
+        </article>
+    {% endfor %}
+
+    <div class="pagination">
+        {% if posts.has_prev %}
+            <a href="{{ url_for('main.index', page=posts.prev_num) }}">&laquo; Previous</a>
+        {% endif %}
+        {% if posts.has_next %}
+            <a href="{{ url_for('main.index', page=posts.next_num) }}">Next &raquo;</a>
+        {% endif %}
+    </div>
+{% endblock %}

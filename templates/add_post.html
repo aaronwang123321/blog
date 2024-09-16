@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}发布新文章{% endblock %}
+
+{% block content %}
+    <h1>发布新文章</h1>
+    <form method="POST" action="{{ url_for('main.add_post') }}">
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.title.label }}
+            {{ form.title() }}
+        </div>
+        <div>
+            {{ form.content.label }}
+            {{ form.content() }}
+        </div>
+        <div>
+            {{ form.submit() }}
+        </div>
+    </form>
+{% endblock %}

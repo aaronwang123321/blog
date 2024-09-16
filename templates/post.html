@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Post{% endblock %}
+
+{% block content %}
+    <article>
+        <h2>{{ post.title }}</h2>
+        <div class="post-meta">
+            By {{ post.author.username }} on {{ post.date_posted.strftime('%Y-%m-%d') }}
+        </div>
+        <p>{{ post.content }}</p>
+    </article>
+
+    <h3>Comments</h3>
+    {% if current_user.is_authenticated %}
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <div>
+                {{ form.content.label }}
+                {{ form.content(class="form-control") }}
+            </div>
+            {{ form.submit(class="btn btn-primary") }}
+        </form>
+    {% else %}
+        <p>Please <a href="{{ url_for('main.login') }}">login</a> to leave a comment.</p>
+    {% endif %}
+
+    {% for comment in comments %}
+        <div class="comment">
+            <div class="comment-meta">
+                By {{ comment.author.username }} on {{ comment.date_posted.strftime('%Y-%m-%d %H:%M') }}
+            </div>
+            <p>{{ comment.content }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
